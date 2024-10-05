@@ -12,6 +12,7 @@ class AppColors {
 
   // Additional colors
   static const Color errorColor = Color(0xFFB00020); // Example: Red
-  static const Color notifColor = Color(0xFF002CB0); // Example: Red
+  static const Color notifColor = Color(0xFF002CB0); // Example: blue
+    static const Color connColor = Color.fromARGB(255, 6, 176, 0); // Example: green
 }
 
