@@ -16,7 +16,7 @@ class AuthRepo extends GetxService {
     try {
       await sharedPreferences.setString(AppConstants.TOKEN, token);
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -24,7 +24,7 @@ class AuthRepo extends GetxService {
   try {
     await sharedPreferences.remove(AppConstants.TOKEN);
   } catch (e) {
-    throw e;
+    rethrow;
   }
 }
 
@@ -37,7 +37,7 @@ class AuthRepo extends GetxService {
       );
       return response;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -56,7 +56,7 @@ class AuthRepo extends GetxService {
       });
       return response;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

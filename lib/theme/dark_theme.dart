@@ -19,5 +19,5 @@ ThemeData dark = ThemeData(
     appBarTheme: const AppBarTheme(backgroundColor: Color(0x4D334257)),
     colorScheme: const ColorScheme.dark(
             primary: Color(0xFFcda335), secondary: Color(0xFFcda335))
-        .copyWith(background: const Color(0xFF212326))
+        .copyWith(surface: const Color(0xFF212326))
         .copyWith(error: const Color(0xFFdd3135)));

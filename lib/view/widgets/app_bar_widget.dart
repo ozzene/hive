@@ -8,7 +8,7 @@ class CustomAppBarWidget extends StatefulWidget {
   final bool isProfile;
   final bool isBack;
 
-  CustomAppBarWidget({required this.title, this.isProfile = false,this.isBack=false});
+  const CustomAppBarWidget({super.key, required this.title, this.isProfile = false,this.isBack=false});
   @override
   State<CustomAppBarWidget> createState() => _CustomAppBarWidgetState();
 }
@@ -34,7 +34,7 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
+          SizedBox(
             width: 50,
             height: 50,
             child:widget.isBack ? IconButton(
@@ -75,7 +75,7 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
                           )),
                     ),
                     Positioned(
-                        child: Container(
+                        child: SizedBox(
                       width: 50,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -85,14 +85,14 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
                             height: 15,
                             decoration: BoxDecoration(
                               color: Theme.of(context).scaffoldBackgroundColor,
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(20),
                               ),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
+                                    EdgeInsets.only(left: 8, bottom: 8),
                                 child: CircleAvatar(
                                   radius: 5,
                                   backgroundColor: Colors.red,
@@ -105,7 +105,7 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
                     ))
                   ],
                 )
-              : Container(
+              : const SizedBox(
                   width: 50,
                   height: 50,
                 )

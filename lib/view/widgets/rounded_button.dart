@@ -17,9 +17,9 @@ class CustomElevatedButton extends StatelessWidget {
   final IconData? icon;
   final Color? iconColor;
 
-  CustomElevatedButton(
+  const CustomElevatedButton(
 
-      {required this.width,
+      {super.key, required this.width,
       required this.height,
       this.iconColor,
       this.text,
@@ -63,7 +63,7 @@ class CustomElevatedButton extends StatelessWidget {
                     color:iconColor?? Colors.white,
                     size: 16,
                   ),
-                SizedBox(width: Dimensions.defaultSpacing,)
+                const SizedBox(width: Dimensions.defaultSpacing,)
                 ],
               ),
               

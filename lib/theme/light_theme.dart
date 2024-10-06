@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData light = ThemeData(
     fontFamily: 'Roboto',
-    primaryColor:  Color.fromRGBO(202, 59, 48, 1),
+    primaryColor:  const Color.fromRGBO(202, 59, 48, 1),
     secondaryHeaderColor: const Color(0xFFDFEDFF),
     disabledColor: const Color(0xFFBABFC4),
     brightness: Brightness.light,
@@ -19,5 +19,5 @@ ThemeData light = ThemeData(
     appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
     colorScheme: const ColorScheme.light(
             primary: Color(0xFFdcb247), secondary: Color(0xFFdcb247))
-        .copyWith(background: const Color(0xFFFCFCFC))
+        .copyWith(surface: const Color(0xFFFCFCFC))
         .copyWith(error: const Color(0xFFE84D4F)));

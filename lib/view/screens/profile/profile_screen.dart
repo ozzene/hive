@@ -67,6 +67,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
+            
+            
             Container(
               padding: EdgeInsets.all(Dimensions.paddingSizeDefault),
               child: Column(

@@ -1,4 +1,6 @@
 
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class MultiSelectWidget extends StatefulWidget {
@@ -7,7 +9,7 @@ class MultiSelectWidget extends StatefulWidget {
   final ValueChanged<List<String>> onSelectionChanged;
   final int maximumSelectionSize;
 
-  MultiSelectWidget({
+  const MultiSelectWidget({super.key, 
     required this.selectionWidgetList,
     required this.selectedWidgetList,
     required this.onSelectionChanged,
@@ -35,7 +37,7 @@ class _MultiSelectWidgetState extends State<MultiSelectWidget> {
               setState(() {
                 tappedIndex = index;
               });
-              Future.delayed(Duration(milliseconds: 10), () {
+              Future.delayed(const Duration(milliseconds: 10), () {
                 setState(() {
                   tappedIndex = -1;
                 });
@@ -51,8 +53,8 @@ class _MultiSelectWidgetState extends State<MultiSelectWidget> {
               widget.onSelectionChanged(widget.selectedWidgetList);
             },
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+              duration: const Duration(milliseconds: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -69,7 +71,7 @@ class _MultiSelectWidgetState extends State<MultiSelectWidget> {
                 ],
               ),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                 child: Text(
                   hobby,
                   style: TextStyle(

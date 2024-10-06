@@ -33,7 +33,6 @@ class AuthController extends GetxController implements GetxService {
         
         Map map = response.body;
         String token = map["data"]["token"];
-        print("----------------token:${token}");
         await authRepo.saveAuthToken(token);
         _isLoading = false;
         update();

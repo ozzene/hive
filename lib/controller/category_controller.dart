@@ -23,7 +23,7 @@ class CategoryController extends GetxController implements GetxService {
   List<CatalogItem> _products = [];
   List<CatalogItem> get products => _products;
 
-  List<CartModel> _cart = [];
+  final List<CartModel> _cart = [];
   List<CartModel> get cart => _cart;
 
   List<CatalogItem> _searchresults = [];
@@ -276,6 +276,5 @@ class CategoryController extends GetxController implements GetxService {
         update();
       }
     }
-    print(_searchresults.toString());
   }
 }

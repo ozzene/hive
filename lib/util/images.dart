@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Images {
   static const String icon = 'assets/images/logo.png';
   static const String cloud = 'assets/images/icons/cloud.svg';
@@ -38,6 +40,10 @@ class Images {
   static const String power = 'assets/images/icons/power.svg';
   static const String time = 'assets/images/icons/time.svg';
   static const String start = 'assets/images/icons/start.svg';
+  static const String motion = 'assets/images/icons/motion.svg';
+  static const String cctv = 'assets/images/icons/cctv.svg';
+  static const String sos = 'assets/images/icons/sos.svg';
+  
   static const String arrowback = 'assets/images/icons/arrow-back.svg';
   static const String arrowforward = 'assets/images/icons/arrow-forward.svg';
   static const String menuvertical = 'assets/images/icons/menu-vertical.svg';
@@ -118,6 +124,13 @@ class Images {
   static const String soap = 'assets/images/icons/categories/soap.svg';
   static const String emptyCart = 'assets/images/icons/cart-empty.svg';
   static const String camera = 'assets/images/icons/camera.svg';
-
   static const String zwFlag = 'assets/images/langauges/zw.png';
+  static const String locked = 'assets/images/icons/locked.svg';
+  static const String unlocked = 'assets/images/icons/unlocked.svg';
+  static const String personmotion = 'assets/images/icons/person-motion.svg';
+  static const String automation = 'assets/images/icons/automation.svg';
+  static const String smartthings = 'assets/images/icons/smartthings.svg';
+  static const String records = 'assets/images/icons/records.svg';
+  static const String bulbon = 'assets/images/icons/bulb_on.svg';
+  static const String bulboff = 'assets/images/icons/bulb_off.svg';
 }

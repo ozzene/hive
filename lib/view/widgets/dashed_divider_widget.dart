@@ -6,11 +6,9 @@ class DashedDivider extends StatelessWidget {
   const DashedDivider({super.key, required this.color});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomPaint(
-        painter: DashedLinePainter(
-          color: color
-        ),
+    return CustomPaint(
+      painter: DashedLinePainter(
+        color: color
       ),
     );
   }
@@ -27,8 +25,8 @@ class DashedLinePainter extends CustomPainter {
       ..strokeWidth = 1.0 
       ..style = PaintingStyle.stroke;
 
-    final double dashWidth = 5.0;
-    final double dashSpace = 5.0;
+    const double dashWidth = 5.0;
+    const double dashSpace = 5.0;
 
     double startX = 0.0;
     while (startX < size.width) {

@@ -15,7 +15,7 @@ final  Widget widget;
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20.0),

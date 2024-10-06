@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatefulWidget {
@@ -9,7 +11,8 @@ class CustomSwitch extends StatefulWidget {
   final double height;
   final EdgeInsets padding;
 
-  CustomSwitch({
+  const CustomSwitch({
+    super.key,
     required this.value,
     required this.onChanged,
     this.activeColor = Colors.blue,
@@ -47,16 +50,28 @@ class _CustomSwitchState extends State<CustomSwitch> {
         padding: widget.padding,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(widget.height * 0.5),
-          color: switchValue ? widget.activeColor : widget.backgroundColor,
+          color: switchValue ? null : widget.backgroundColor,
+          gradient: switchValue
+              ? LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    const Color(0xFFF2B10C).withOpacity(0.5),
+                    const Color(0xFFF2B10C),
+                    const Color.fromARGB(255, 238, 100, 58).withOpacity(0.75),
+                  
+                  ],
+                )
+              : null,
         ),
         child: Stack(
           alignment: switchValue ? Alignment.centerRight : Alignment.centerLeft,
           children: [
             AnimatedContainer(
-              duration: Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 500),
               width: widget.height - widget.padding.vertical,
               height: widget.height - widget.padding.vertical,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
               ),

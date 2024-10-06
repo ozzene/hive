@@ -23,7 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     useremail.dispose();
     userpass.dispose();
@@ -93,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Colors.red,
                                       Theme.of(context).primaryColor
                                     ],
-                                  ).createShader(Rect.fromLTWH(0, 0, 200, 25)),
+                                  ).createShader(const Rect.fromLTWH(0, 0, 200, 25)),
                                 fontSize: Dimensions.fontSizeOverLarge,
                                 fontWeight: FontWeight.bold),
                       ),
@@ -209,7 +209,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       } else {
                         DialogHelper.showGeneralDialog(
                           context,
-                          child: LoadingWidget(),
+                          child: const LoadingWidget(),
                         );
                         authController
                             .login(context,

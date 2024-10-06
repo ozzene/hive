@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     useremail.dispose();
   }
@@ -92,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Colors.red,
                                       Theme.of(context).primaryColor
                                     ],
-                                  ).createShader(Rect.fromLTWH(0, 0, 200, 25)),
+                                  ).createShader(const Rect.fromLTWH(0, 0, 200, 25)),
                                 fontSize: Dimensions.fontSizeOverLarge,
                                 fontWeight: FontWeight.bold),
                       ),
@@ -208,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       } else {
                         DialogHelper.showGeneralDialog(
                           context,
-                          child: LoadingWidget(),
+                          child: const LoadingWidget(),
                         );
                         authController
                             .login(context,

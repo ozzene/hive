@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -10,8 +12,8 @@ class PaymentSelectionWidget extends StatefulWidget {
   final ValueChanged<List<String>> onSelectionChanged;
   final int maximumSelectionSize;
 
-  PaymentSelectionWidget(
-      {required this.selectionWidgetList,
+  const PaymentSelectionWidget(
+      {super.key, required this.selectionWidgetList,
       required this.selectedWidgetList,
       required this.onSelectionChanged,
       required this.maximumSelectionSize});
@@ -59,8 +61,8 @@ class _PaymentSelectionWidgetState extends State<PaymentSelectionWidget> {
             child: AnimatedContainer(
               width: Get.width * 0.42,
               constraints: const BoxConstraints(maxHeight: 100),
-              duration: Duration(milliseconds: 300),
-              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+              duration: const Duration(milliseconds: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(8),

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:hive/util/dimensiona.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,7 @@ class CustomSquareButtonWidget extends StatefulWidget {
   final IconData icon;
   final Color? iconColor;
 
-  CustomSquareButtonWidget({
+  const CustomSquareButtonWidget({super.key, 
   
     required this.onTap,
     this.backgroundColor = Colors.blue,

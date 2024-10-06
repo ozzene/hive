@@ -1,12 +1,14 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive/util/dimensiona.dart';
 import 'package:hive/util/images.dart';
+import 'package:hive/view/screens/alarm/alarm_screen.dart';
+import 'package:hive/view/screens/light/light_screen.dart';
+import 'package:hive/view/screens/motion/motion_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Outdoor",
     "Garage"
   ];
-  
+
   int selectedRoomCategory = 0;
   @override
   Widget build(BuildContext context) {
@@ -140,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Images.sun,
                                 width: 16,
                                 height: 16,
-                                color: const Color.fromARGB(255, 242, 177, 12),
+                                color: const Color(0xFFF2B10C),
                               ),
                             ),
                             SizedBox(
@@ -299,18 +301,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Expanded(
-                child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: Dimensions.paddingSizeDefault,
-              ),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: ["", "", "", "", ""]
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => Container(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.paddingSizeDefault,
+                ),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      GestureDetector( 
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LightScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
                           margin: EdgeInsets.only(
                             bottom: Dimensions.paddingSizeDefault,
                             left: Dimensions.paddingSizeDefault,
@@ -389,8 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       .withOpacity(0.5)),
                                         ),
                                         SizedBox(
-                                          width:
-                                              Dimensions.paddingSizeExtraSmall,
+                                          width: Dimensions.paddingSizeExtraSmall,
                                         ),
                                         SizedBox(
                                           width: 12,
@@ -402,8 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width:
-                                              Dimensions.paddingSizeExtraSmall,
+                                          width: Dimensions.paddingSizeExtraSmall,
                                         ),
                                         Text(
                                           "100",
@@ -418,8 +424,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       .withOpacity(0.5)),
                                         ),
                                         SizedBox(
-                                          width:
-                                              Dimensions.paddingSizeExtraSmall,
+                                          width: Dimensions.paddingSizeExtraSmall,
                                         ),
                                         SizedBox(
                                           width: 12,
@@ -431,8 +436,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width:
-                                              Dimensions.paddingSizeExtraSmall,
+                                          width: Dimensions.paddingSizeExtraSmall,
                                         ),
                                         Text(
                                           "100",
@@ -447,8 +451,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       .withOpacity(0.5)),
                                         ),
                                         SizedBox(
-                                          width:
-                                              Dimensions.paddingSizeExtraSmall,
+                                          width: Dimensions.paddingSizeExtraSmall,
                                         ),
                                         SizedBox(
                                           width: 12,
@@ -497,11 +500,402 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                      )
-                      .toList(),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MotionScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            bottom: Dimensions.paddingSizeDefault,
+                            left: Dimensions.paddingSizeDefault,
+                            right: Dimensions.paddingSizeDefault,
+                          ),
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radiusDefault,
+                            ),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Theme.of(context)
+                                    .shadowColor
+                                    .withOpacity(0.25),
+                                offset: const Offset(3, 2),
+                                spreadRadius: 5,
+                                blurRadius: 10,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  width: 35,
+                                  height: 35,
+                                  child: SvgPicture.asset(
+                                    Images.motion,
+                                    width: 14,
+                                    height: 18,
+                                    color: Theme.of(context).disabledColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: Dimensions.paddingSizeDefault,
+                              ),
+                              Expanded(
+                                flex: 8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Motion Sensor",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall
+                                          ?.copyWith(
+                                            fontSize:
+                                                Dimensions.fontSizeExtraLarge,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 12,
+                                          height: 12,
+                                          child: SvgPicture.asset(
+                                            Images.notifications,
+                                            color:
+                                                Theme.of(context).disabledColor,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              Dimensions.paddingSizeExtraSmall,
+                                        ),
+                                        Text(
+                                          "06/10 17:28pm",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                                  fontSize:
+                                                      Dimensions.fontSizeSmall,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: const Color(0xFF121212)
+                                                      .withOpacity(0.5)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: Dimensions.paddingSizeDefault,
+                              ),
+                              Container(
+                                width: 30,
+                                height: 30,
+                                padding: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(
+                                  Images.arrowforward,
+                                  width: 16,
+                                  height: 16,
+                                  color: Theme.of(context).hintColor,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          bottom: Dimensions.paddingSizeDefault,
+                          left: Dimensions.paddingSizeDefault,
+                          right: Dimensions.paddingSizeDefault,
+                        ),
+                        padding: EdgeInsets.all(
+                          Dimensions.paddingSizeDefault,
+                        ),
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            Dimensions.radiusDefault,
+                          ),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Theme.of(context)
+                                  .shadowColor
+                                  .withOpacity(0.25),
+                              offset: const Offset(3, 2),
+                              spreadRadius: 5,
+                              blurRadius: 10,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: SvgPicture.asset(
+                                    Images.cctv,
+                                    width: 14,
+                                    height: 18,
+                                    color: Theme.of(context).disabledColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Dimensions.paddingSizeDefault,
+                            ),
+                            Expanded(
+                              flex: 8,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Front Camera",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontSize:
+                                              Dimensions.fontSizeExtraLarge,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "ONLINE",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                                fontSize:
+                                                    Dimensions.fontSizeSmall,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFF121212)
+                                                    .withOpacity(0.5)),
+                                      ),
+                                      SizedBox(
+                                        width: Dimensions.paddingSizeExtraSmall,
+                                      ),
+                                      SizedBox(
+                                        width: 12,
+                                        height: 12,
+                                        child: SvgPicture.asset(
+                                          Images.time,
+                                          color:
+                                              Theme.of(context).disabledColor,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: Dimensions.paddingSizeExtraSmall,
+                                      ),
+                                      Text(
+                                        "34hrs",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                                fontSize:
+                                                    Dimensions.fontSizeSmall,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFF121212)
+                                                    .withOpacity(0.5)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: Dimensions.paddingSizeDefault,
+                            ),
+                            Container(
+                              width: 30,
+                              height: 30,
+                              padding: const EdgeInsets.all(5),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: SvgPicture.asset(
+                                Images.arrowforward,
+                                width: 16,
+                                height: 16,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AlarmScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            bottom: Dimensions.paddingSizeDefault,
+                            left: Dimensions.paddingSizeDefault,
+                            right: Dimensions.paddingSizeDefault,
+                          ),
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radiusDefault,
+                            ),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Theme.of(context)
+                                    .shadowColor
+                                    .withOpacity(0.25),
+                                offset: const Offset(3, 2),
+                                spreadRadius: 5,
+                                blurRadius: 10,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  width: 35,
+                                  height: 35,
+                                  child: SvgPicture.asset(
+                                    Images.sos,
+                                    width: 14,
+                                    height: 18,
+                                    color: Theme.of(context).disabledColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: Dimensions.paddingSizeDefault,
+                              ),
+                              Expanded(
+                                flex: 8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Alarm System",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall
+                                          ?.copyWith(
+                                            fontSize:
+                                                Dimensions.fontSizeExtraLarge,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "ARMED",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                                  fontSize:
+                                                      Dimensions.fontSizeSmall,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: const Color(0xFF121212)
+                                                      .withOpacity(0.5)),
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              Dimensions.paddingSizeExtraSmall,
+                                        ),
+                                        SizedBox(
+                                          width: 12,
+                                          height: 12,
+                                          child: SvgPicture.asset(
+                                            Images.notifications,
+                                            color:
+                                                Theme.of(context).disabledColor,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              Dimensions.paddingSizeExtraSmall,
+                                        ),
+                                        Text(
+                                          "06/10 17:28pm",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                                  fontSize:
+                                                      Dimensions.fontSizeSmall,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: const Color(0xFF121212)
+                                                      .withOpacity(0.5)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: Dimensions.paddingSizeDefault,
+                              ),
+                              Container(
+                                width: 30,
+                                height: 30,
+                                padding: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(
+                                  Images.arrowforward,
+                                  width: 16,
+                                  height: 16,
+                                  color: Theme.of(context).hintColor,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ))
+            )
           ],
         ),
       ),

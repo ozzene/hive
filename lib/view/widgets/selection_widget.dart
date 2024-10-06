@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:hive/util/app_constants.dart';
 import 'package:hive/util/dimensiona.dart';
@@ -6,7 +8,7 @@ class SingleSelectWidget extends StatefulWidget {
   final String selectedWidget;
   final ValueChanged<String> onSelectionChanged;
 
-  SingleSelectWidget({
+  const SingleSelectWidget({super.key, 
     required this.selectionWidgetList,
     required this.selectedWidget,
     required this.onSelectionChanged,
@@ -33,7 +35,7 @@ class _SingleSelectWidgetState extends State<SingleSelectWidget> {
               setState(() {
                 tappedIndex = index;
               });
-              Future.delayed(Duration(milliseconds: 10), () {
+              Future.delayed(const Duration(milliseconds: 10), () {
                 setState(() {
                   tappedIndex = -1;
                 });
@@ -47,7 +49,7 @@ class _SingleSelectWidgetState extends State<SingleSelectWidget> {
               height: 50,
               margin: EdgeInsets.symmetric(
                   vertical: Dimensions.paddingSizeExtraSmall),
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               decoration: BoxDecoration(
                   border: Border.all(
                     color: Theme.of(context).dividerColor.withOpacity(0.25),
@@ -56,7 +58,7 @@ class _SingleSelectWidgetState extends State<SingleSelectWidget> {
                   color: AppConstants.color2,
                   borderRadius: BorderRadius.circular(5)),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                 child: Center(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,

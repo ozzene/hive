@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive/util/dimensiona.dart';
 
 class LoadingWidget extends StatefulWidget {
+  const LoadingWidget({super.key});
+
   @override
   State<LoadingWidget> createState() => _LoadingWidgetState();
 }
@@ -13,7 +15,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
       backgroundColor: Colors.black.withOpacity(0.1),
       body: Container(
        
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(

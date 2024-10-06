@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class SelectionBoxWidget extends StatefulWidget {
@@ -9,7 +11,7 @@ class SelectionBoxWidget extends StatefulWidget {
   final double height;
   final EdgeInsets padding;
 
-  SelectionBoxWidget({
+  const SelectionBoxWidget({super.key, 
     required this.value,
     required this.onChanged,
     this.activeColor = Colors.blue,

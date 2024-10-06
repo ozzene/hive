@@ -11,7 +11,7 @@ class CustomSearchField extends StatefulWidget {
   final Function? onChanged;
   final Function? filterAction;
   final bool isFilter;
-  CustomSearchField({
+  const CustomSearchField({super.key, 
     required this.controller,
     required this.hint,
     required this.prefix,
@@ -78,7 +78,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
         ),
         widget.isFilter
             ? Padding(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
                 // padding: EdgeInsets.only(
                 //     left: Provider.of<LocalizationProvider>(context,
                 //                 listen: false)
@@ -104,7 +104,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
                           ),
                 ),
               )
-            : SizedBox(),
+            : const SizedBox(),
       ],
     );
   }
