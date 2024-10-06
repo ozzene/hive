@@ -1,17 +1,61 @@
+// ignore_for_file: prefer_const_constructors
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/views/home_view.dart';
+import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+import 'package:hive/controller/theme_controller.dart';
+import 'package:hive/helper/route_helper.dart';
+import 'package:hive/theme/dark_theme.dart';
+import 'package:hive/theme/light_theme.dart';
+import 'package:hive/util/app_constants.dart';
+import 'package:hive/view/screens/root/no_found_screen.dart';
+import 'helper/di.dart' as di;
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(DevicePreview(
+      enabled: true,
+      builder: (BuildContext context) {
+        return MyApp();
+      },
+    ));
+  });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeView(),
-    );
+    return GetBuilder<ThemeController>(builder: (themeController) {
+      return GetMaterialApp(
+        useInheritedMediaQuery: true,
+        builder: DevicePreview.appBuilder,
+        title: AppConstants.appName,
+        debugShowCheckedModeBanner: false,
+        navigatorKey: Get.key,
+        theme: themeController.darkTheme ? dark : light,
+        fallbackLocale: Locale(
+          AppConstants.languages[0].languageCode!,
+          AppConstants.languages[0].countryCode,
+        ),
+        initialRoute: RouteHelper.splash,
+        getPages: RouteHelper.routes,
+        unknownRoute: GetPage(
+          name: '/',
+          page: () => const NotFoundScreen(),
+        ),
+        defaultTransition: Transition.topLevel,
+        transitionDuration: const Duration(milliseconds: 500),
+        scrollBehavior: const MaterialScrollBehavior().copyWith(
+          dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+        ),
+      );
+    });
   }
 }
